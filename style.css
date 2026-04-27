@@ -1,0 +1,339 @@
+:root {
+  --bg: #f5f7fb;
+  --bg-accent: radial-gradient(circle at top left, rgba(55, 114, 255, 0.18), transparent 35%),
+    radial-gradient(circle at 80% 20%, rgba(19, 197, 150, 0.18), transparent 30%),
+    linear-gradient(180deg, #f7f9fd 0%, #eef2f9 100%);
+  --surface: rgba(255, 255, 255, 0.72);
+  --surface-strong: #ffffff;
+  --text: #182033;
+  --text-muted: #52607a;
+  --primary: #2f6bff;
+  --primary-strong: #1d4ed8;
+  --border: rgba(24, 32, 51, 0.1);
+  --shadow: 0 20px 45px rgba(31, 45, 74, 0.12);
+}
+
+body.dark-theme {
+  --bg: #0e1525;
+  --bg-accent: radial-gradient(circle at top left, rgba(81, 118, 255, 0.22), transparent 35%),
+    radial-gradient(circle at 80% 20%, rgba(27, 214, 168, 0.18), transparent 30%),
+    linear-gradient(180deg, #10192d 0%, #09111d 100%);
+  --surface: rgba(18, 27, 46, 0.78);
+  --surface-strong: #13203a;
+  --text: #eff4ff;
+  --text-muted: #b9c5de;
+  --primary: #7aa2ff;
+  --primary-strong: #9ab8ff;
+  --border: rgba(239, 244, 255, 0.1);
+  --shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--bg-accent);
+  color: var(--text);
+  transition: background 0.35s ease, color 0.35s ease;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.page-shell {
+  min-height: 100vh;
+}
+
+.hero,
+.section,
+.footer {
+  width: min(1120px, calc(100% - 2rem));
+  margin: 0 auto;
+}
+
+.hero {
+  padding: 1.25rem 0 3rem;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.brand {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(12px);
+  transition: transform 0.2s ease, background 0.35s ease, color 0.35s ease;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-2px);
+}
+
+.hero__content {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.hero__text,
+.profile-card,
+.panel,
+.project-card,
+.contact-panel {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  backdrop-filter: blur(14px);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+}
+
+.hero__text {
+  padding: 2rem;
+}
+
+.eyebrow,
+.section-label,
+.project-tag,
+.profile-card__label {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.8rem;
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.hero__text h1 {
+  margin: 0.8rem 0 1rem;
+  font-size: clamp(2.2rem, 5vw, 4.4rem);
+  line-height: 1.08;
+}
+
+.hero__summary,
+.panel p,
+.project-card p,
+.contact-panel p,
+.profile-list {
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.8rem;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.95rem 1.25rem;
+  border-radius: 999px;
+  font-weight: 700;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.button:hover {
+  transform: translateY(-3px);
+}
+
+.button--primary {
+  background: linear-gradient(135deg, var(--primary), var(--primary-strong));
+  color: #ffffff;
+  box-shadow: 0 16px 26px rgba(47, 107, 255, 0.28);
+}
+
+.button--secondary {
+  background: var(--surface-strong);
+  border: 1px solid var(--border);
+}
+
+.profile-card {
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.profile-card::before {
+  content: "";
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  top: -70px;
+  right: -60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(47, 107, 255, 0.22), rgba(19, 197, 150, 0.22));
+}
+
+.profile-card h2 {
+  position: relative;
+  margin: 0.6rem 0 1rem;
+  font-size: 1.8rem;
+}
+
+.profile-list {
+  position: relative;
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.section {
+  padding: 1rem 0 3rem;
+}
+
+.section-heading {
+  margin-bottom: 1.5rem;
+}
+
+.section-heading h2 {
+  margin: 0.55rem 0 0;
+  font-size: clamp(1.8rem, 3vw, 2.7rem);
+}
+
+.about-grid,
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.panel,
+.project-card,
+.contact-panel {
+  padding: 1.6rem;
+}
+
+.panel h3,
+.project-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+}
+
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
+
+.skill-chip {
+  padding: 0.85rem 1.1rem;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  font-weight: 600;
+}
+
+.projects-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.project-card {
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 24px 46px rgba(47, 107, 255, 0.18);
+  border-color: rgba(47, 107, 255, 0.4);
+}
+
+.contact-panel a {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.footer {
+  padding: 0 0 2rem;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.reveal {
+  animation: fadeUp 0.7s ease both;
+}
+
+.reveal--delay {
+  animation-delay: 0.18s;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0.4;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 900px) {
+  .hero__content,
+  .about-grid,
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding-top: 1rem;
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .theme-toggle {
+    justify-content: center;
+  }
+
+  .hero__text,
+  .profile-card,
+  .panel,
+  .project-card,
+  .contact-panel {
+    padding: 1.3rem;
+  }
+
+  .hero__actions {
+    flex-direction: column;
+  }
+
+  .button {
+    width: 100%;
+  }
+}
